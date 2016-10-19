@@ -8,12 +8,17 @@ var express = require('express'),
 
 app.use(bodyParser.urlencoded({ extended: true  }));
 app.use(methodOverride('_method'));
+
 app.set('view engine', 'ejs');
-app.set('views', __dirname);
+app.set('views', '.');
+
+var items = ['Berlin', 'Paris', 'Warsaw', 'Wien', 'London', 'Praga'];
 
 app.get('/', function(req, res) {
-
-	res.render('41-web-ejs1');
+	if (typeof req.query.capital === 'string') {
+		items.push(req.query.capital);
+	}
+	res.render('41-web-ejs1', { items: items});
 });
 
 

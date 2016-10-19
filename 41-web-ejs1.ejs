@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Form</title>
+	</head>
+	<body>
+
+		<form method="GET" action="">
+			<fieldset style="width: 50%; background-color: #fdd; padding: 20px;">
+				<div style="padding: 5px; ">
+					Name: <input name="capital"/> <button type="submit">Add</button>
+				</div>
+			</fieldset>
+		</form>
+
+		<table>
+			<thead>
+				<tr><th>Capitals</th><tr>
+			</thead>
+			<tbody>
+			<% for(var i=0; i < items.length; i++) {%>
+				<tr><td><%= items[i] %></td><tr>
+			<% } %>
+			</tbody>
+		</table>
+
+	</body>
+</html>
