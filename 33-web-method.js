@@ -9,14 +9,14 @@ var express = require('express'),
 app.use(bodyParser.urlencoded({ extended: true  }));
 app.use(methodOverride('_method'));
 
-var go = function(req, res) {	
+var go = function(req, res) {
 	fs.readFile('33-web-method1.html', 'utf8', function(err, output) {
 		res.type('html').send(
 			output
 				.replace('{{name}}', req.body.name)
 				.replace('{{what}}', req.body.what)
 		);
-	});	
+	});
 };
 
 app.get('/', go);

@@ -6,10 +6,10 @@
 	<body>
 
 		<h3>SELECT * FROM users</h3>
-		
-		<table>
+
+		<table border="1" cellpadding="5">
 			<thead>
-				<tr><th>First name</th><th>Last name</th><th>Description</th><tr>
+				<tr style="background-color: yellow"><th>First name</th><th>Last name</th><th>Description</th><tr>
 			</thead>
 			<tbody>
 			<% for(var i=0; i < items.length; i++) {%>
@@ -17,6 +17,6 @@
 			<% } %>
 			</tbody>
 		</table>
-		
+
 	</body>
 </html>

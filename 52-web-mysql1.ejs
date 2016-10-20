@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Form</title>
+	</head>
+	<body>
+
+<script type="text/javascript">
+var edit = function(id) {
+	window.location = '/?id='+ id;
+};
+var cancel = function() {
+	window.location = '/';
+};
+</script>
+
+		<h3>Add/Edit/Delete Users</h3>
+
+		<table border="1" cellpadding="5">
+			<thead>
+				<tr style="background-color: yellow">
+					<th>ID</th>
+					<th>First name</th>
+					<th>Last name</th>
+					<th>Description</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+			<% for (var i = 0; i < items.length; i++) { %>
+				<% if (items[i].id === get.id * 1) { %>
+					<form method="post" action="/?_method=PUT"><input type="hidden" name="id" value="<%= items[i].id %>">
+						<tr style="background-color: orange">
+							<td><%= items[i].id %></td>
+							<td><input name="firstname" value="<%= items[i].firstname %>"/></td>
+							<td><input name="lastname" value="<%= items[i].lastname %>"/></td>
+							<td><input name="description" value="<%= items[i].description %>"/></td>
+							<td><input type="submit" value="Save"/></td>
+							<td><input type="button" onclick="cancel()" value="Cancel"></td>
+						</tr>
+					</form>
+				<% } else { %>
+
+						<tr>
+							<td><%= items[i].id %></td>
+							<td><%= items[i].firstname %></td>
+							<td><%= items[i].lastname %></td>
+							<td><%= items[i].description %></td>
+							<td><% if (!get.id) { %><input type="submit" onclick="edit(<%= items[i].id %>)" value="Edit"/><% } %></td>
+							<td><% if (!get.id) { %>
+								<form method="post" action="/?_method=DELETE">
+									<input type="hidden" name="id" value="<%= items[i].id %>">
+									<input type="submit" value="Delete"/>
+								</form><% } %>
+							</td>
+						</tr>
+
+				<% } %>
+			<% } %>
+			</tbody>
+
+			<% if (!get.id) { %>
+				<form method="post" action="/?_method=POST">
+					<tfood>
+						<tr style="background-color: lightgreen ; ">
+							<td>New</td>
+							<td><input name="firstname" value=""/></td>
+							<td><input name="lastname" value=""/></td>
+							<td><input name="description" value=""/></td>
+							<td><input type="submit" value="Add"></td>
+							<td></td>
+						</tr>
+					</tfood>
+				</form>
+			<% } %>
+
+		</table>
+
+	</body>
+</html>

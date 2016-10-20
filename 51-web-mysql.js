@@ -36,7 +36,7 @@ var pool  = mysql.createPool({
 	database: 'deafit',
 		insecureAuth: true,
 		charset: 'utf8',
-		multipleStatements: true	
+		multipleStatements: true
 });
 
 pool.getConnection(function(err, connection) {
